@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إلى حبيبتي ❤️</title>
+    <style>
+        body { 
+            background: linear-gradient(135deg, #8b0000 0%, #330000 100%); 
+            color: white; 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            text-align: center; 
+            margin: 0; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            min-height: 100vh; 
+        }
+        .card { 
+            width: 85%; 
+            max-width: 380px; 
+            background: rgba(255, 255, 255, 0.1); 
+            padding: 30px; 
+            border-radius: 30px; 
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255,255,255,0.2);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+        }
+        .page { display: none; animation: fadeIn 0.8s; }
+        .active { display: block; }
+        input { 
+            width: 85%; padding: 15px; border-radius: 50px; border: none; 
+            margin: 20px 0; text-align: center; font-size: 18px; outline: none;
+            background: white; color: black;
+        }
+        button { 
+            background: #ff4d4d; color: white; border: none; padding: 15px 40px; 
+            border-radius: 50px; cursor: pointer; font-weight: bold; font-size: 18px;
+            box-shadow: 0 4px 15px rgba(255, 77, 77, 0.4);
+        }
+        .timer-box { 
+            font-size: 20px; margin: 15px 0; color: #ffeb3b; 
+            background: rgba(0,0,0,0.3); padding: 20px; border-radius: 20px; 
+            border: 1px dashed #ffeb3b;
+        }
+        .love-icon { margin: 20px 0; filter: drop-shadow(0 0 10px #ff4d4d); }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .heart-beat { animation: beat 1.5s infinite; }
+        @keyframes beat { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.1); } }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div id="page1" class="page active">
+            <div class="heart-beat">
+                <svg width="100" height="100" viewBox="0 0 24 24" fill="#ff4d4d">
+                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                </svg>
+            </div>
+            <h2>جاهزة يا روحي؟ 😍</h2>
+            <p>اكتبي تاريخ يومنا المميز</p>
+            <input type="password" id="passInput" placeholder="كلمة السر...">
+            <br>
+            <button onclick="checkPass()">افتحي قلبي ❤️</button>
+        </div>
+
+        <div id="page2" class="page">
+            <div class="love-icon">
+                <svg width="120" height="120" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="32" cy="32" r="30" fill="#ff4d4d" opacity="0.2"/>
+                    <path d="M32 50c-10-5-18-12-18-20 0-5 4-9 9-9 3 0 6 2 9 5 3-3 6-5 9-5 5 0 9 4 9 9 0 8-8 15-18 20z" fill="#ff4d4d"/>
+                    <path d="M25 40c2 2 5 2 7 0M32 40c2 2 5 2 7 0" stroke="white" stroke-width="2" fill="none" stroke-linecap="round"/>
+                </svg>
+            </div>
+            
+            <p id="loveText" style="font-size: 20px; line-height: 1.6; font-weight: bold;">
+                "أنتِ الحلم اللي اتحقق، والضحكة اللي بتنور أيامي."
+            </p>
+
+            <div class="timer-box">
+                <small>بقالنا مع بعض:</small><br>
+                <span id="t1"></span>
+            </div>
+            
+            <div class="timer-box" style="border-color: #52ff52; color: #52ff52;">
+                <small style="color: white;">فاضل على فرحتنا الكبيرة:</small><br>
+                <span id="t2"></span>
+            </div>
+            
+            <button onclick="changeText()">كلمة حب تانية؟ ❤️</button>
+        </div>
+    </div>
+
+    <script>
+        // رسائل الحب بالعربي فقط
+        const messages = [
+            "بحبك أكتر من أي حاجة في الدنيا ❤️",
+            "أنتِ نصي التاني اللي كنت بدور عليه 😍",
+            "وجودك في حياتي هو أكبر نعمة من ربنا ❤️",
+            "كل يوم معاكي هو بداية جديدة لحبنا 😍",
+            "وعد مني أفضل جنبك طول العمر ❤️"
+        ];
+
+        function changeText() {
+            const randomMsg = messages[Math.floor(Math.random() * messages.length)];
+            document.getElementById('loveText').innerText = randomMsg;
+        }
+
+        function checkPass() {
+            if(document.getElementById('passInput').value === "1162025") {
+                document.getElementById('page1').style.display = 'none';
+                document.getElementById('page2').style.display = 'block';
+                update();
+                setInterval(update, 1000);
+            } else { 
+                alert("التاريخ غلط يا حبيبتي! حاولي تاني ❤️"); 
+            }
+        }
+
+        function update() {
+            const now = new Date();
+            // تاريخ البداية 3 أبريل 2025
+            const start = new Date(2025, 3, 3);
+            // تاريخ الفرح 15 أغسطس 2026
+            const wedding = new Date(2026, 7, 15);
+            
+            const daysPast = Math.floor((now - start) / 86400000);
+            document.getElementById('t1').innerText = daysPast + " يوم من الحب ❤️";
+            
+            const diff = wedding - now;
+            const d = Math.floor(diff / 86400000);
+            const h = Math.floor((diff % 86400000) / 3600000);
+            const m = Math.floor((diff % 3600000) / 60000);
+            
+            document.getElementById('t2').innerText = d + " يوم و " + h + " ساعة و " + m + " دقيقة";
+        }
+    </script>
+</body>
+</html>
